@@ -29,19 +29,26 @@ export class AuthService {
     return this.isLoggedIn;
   }
 
+  private backend: string = 'https://web-game-engine-server.herokuapp.com';
   constructor(private http: HttpClient) {}
 
   RegisterUser(data: Credentials) {
-    return this.http.post<AuthentificationResponse>('/api/register', data);
+    return this.http.post<AuthentificationResponse>(
+      `${this.backend}/api/register`,
+      data
+    );
   }
   LoginUser(data: Credentials) {
-    return this.http.post<AuthentificationResponse>('/api/login', data);
+    return this.http.post<AuthentificationResponse>(
+      `${this.backend}/api/login`,
+      data
+    );
   }
   LogOut() {
-    return this.http.post('/api/logout', {});
+    return this.http.post(`${this.backend}/api/logout`, {});
   }
 
   IsLoggedInAPI() {
-    return this.http.get<IsLoggedIn>('/api/loggedIn');
+    return this.http.get<IsLoggedIn>(`${this.backend}/api/loggedIn`);
   }
 }

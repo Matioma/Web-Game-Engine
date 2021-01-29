@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backend: 'https://web-game-engine-server.herokuapp.com',
 };

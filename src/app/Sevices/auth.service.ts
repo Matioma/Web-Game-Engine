@@ -37,6 +37,12 @@ export class AuthService {
     // observe: 'response' as 'response',
   };
 
+  // corsHeaders = new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  //   // 'Access-Control-Allow-Origin':
+  //   //   'https://web-game-engine-server.herokuapp.com/',
+  // });
+
   constructor(private http: HttpClient) {}
 
   RegisterUser(data: Credentials) {
@@ -49,7 +55,11 @@ export class AuthService {
   LoginUser(data: Credentials) {
     return this.http.post<AuthentificationResponse>(
       `${this.backend}/api/login`,
-      data
+      data,
+      {
+        //headers: this.corsHeaders,
+        withCredentials: true,
+      }
     );
   }
   LogOut() {

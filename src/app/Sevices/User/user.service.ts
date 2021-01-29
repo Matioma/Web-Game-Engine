@@ -13,15 +13,19 @@ export class UserService {
   private backend: string = 'https://web-game-engine-server.herokuapp.com';
   constructor(private http: HttpClient) {}
 
+  requestOptions = {
+    headers: new HttpHeaders({
+      Authorization: 'my-request-token',
+    }),
+    withCredentials: true,
+  };
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     withCredentials: true,
-    // observe: 'response' as 'response',
   };
   getUserData() {
-    return this.http.get<userData>(
-      `${this.backend}/api/userData`,
-      this.httpOptions
-    );
+    return this.http.get<userData>(`${this.backend}/api/userData`, {
+      withCredentials: true,
+    });
   }
 }

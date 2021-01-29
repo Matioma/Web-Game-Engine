@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     const password = target.querySelector('#password').value;
 
     this.auth.LoginUser({ login, password }).subscribe((res) => {
+      console.log(res);
       if (res.success) {
         this.router.navigate(['dashboard']);
       } else {

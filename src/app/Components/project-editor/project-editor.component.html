@@ -1,0 +1,42 @@
+<section>
+  <header>
+    <nav>
+      <a routerLink="/dashboard" class="button" (click)="ResetEngine()">Back</a>
+
+    </nav>
+    <section class="EngineHeader">
+      <p>{{name}}</p>
+      <section>
+        <button class="confirm" (click)="Save()">Save</button>
+        <button class="confirm" (click)="TogglePause()">Play/Stop</button>
+      </section>
+    </section>
+
+
+
+  </header>
+
+
+  <main class="ProjectUI">
+    <section class="GameView">
+      <canvas #gameCanvas></canvas>
+    </section>
+    <section class="Hierarchy">
+      <app-hierarchy-view *ngIf="EngineInstance" [projectModel]=EngineInstance.projectModel>
+      </app-hierarchy-view>
+    </section>
+    <section class="inspector">
+      <app-inspector-view *ngIf="EngineInstance" [selectedObject]=EngineInstance.projectModel.selectedObject>
+      </app-inspector-view>
+    </section>
+    <section class="FilesView">
+      <app-files-view *ngIf="EngineInstance" [projectModel]=EngineInstance.projectModel>
+      </app-files-view>
+    </section>
+  </main>
+</section>
+
+<section *ngIf="EngineInstance && EngineInstance.editorController && EngineInstance.editorController.selectedScriptKey"
+  class="CodeEditor">
+  <app-text-editor [projectData]=EngineInstance.projectModel></app-text-editor>
+</section>

@@ -1,0 +1,25 @@
+<section class="inspector" *ngIf="selectedObject">
+
+  <!-- <p>{{selectedObject.name}}</p> -->
+  <header>
+    <input class="hierarchyElement" [(ngModel)]="selectedObject.name" value={{selectedObject.name}}>
+    <button (click)="Delete()">Delete</button>
+  </header>
+
+  <section>
+    <section *ngFor="let component of selectedObject.behaviours">
+      <app-behaviour-view [component]=component></app-behaviour-view>
+    </section>
+  </section>
+
+
+
+  <section *ngIf="selectedObject" class="newComponents">
+    <button (click)="ShowComponents()">Add Component</button>
+
+    <select *ngIf="showDropDown" name="Components" (change)="selectComponent($event)">
+      <option [ngValue]="null">Select Component</option>
+      <option *ngFor="let file of keys" [ngValue]=file> {{file}}</option>
+    </select>
+  </section>
+</section>

@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Web-Game-Engine'`, () => {
+  it(`should have as title 'WebGameEngineClient'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Web-Game-Engine');
+    expect(app.title).toEqual('WebGameEngineClient');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Web-Game-Engine app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('WebGameEngineClient app is running!');
   });
 });

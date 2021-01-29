@@ -1,0 +1,9 @@
+<section class="textEditor">
+  <header>
+    <button class="button" (click)="CloseFile()">X</button>
+    <button class="button" (click)="SaveFile()">Save</button>
+  </header>
+  <main>
+    <textarea [(ngModel)]="message" (keydown)="onKeydown($event)">{{message}}</textarea>
+  </main>
+</section>

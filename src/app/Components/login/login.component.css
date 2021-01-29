@@ -1,0 +1,37 @@
+.Forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Forms > form {
+  padding: 20px 20px 20px 20px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #463f3a;
+}
+
+form > input {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.Submit {
+  background-color: #e0afa0;
+  color: #f4f3ee;
+  border: 0px;
+}
+
+.errors {
+  padding: 20px;
+}
+
+.errors * {
+  color: #cc3300;
+}

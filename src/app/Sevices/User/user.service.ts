@@ -10,9 +10,10 @@ interface userData {
   providedIn: 'root',
 })
 export class UserService {
+  private backend: string = 'https://web-game-engine-server.herokuapp.com';
   constructor(private http: HttpClient) {}
 
   getUserData() {
-    return this.http.get<userData>('/api/userData');
+    return this.http.get<userData>(`${this.backend}/api/userData`);
   }
 }

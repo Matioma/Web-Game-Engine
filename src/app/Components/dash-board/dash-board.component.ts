@@ -19,6 +19,7 @@ export class DashBoardComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserData().subscribe((data) => {
       this.userName = data.message;
+      console.log('this is my nAME!!!', data);
     });
   }
 

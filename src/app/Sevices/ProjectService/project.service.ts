@@ -31,7 +31,7 @@ export class ProjectService {
   }
 
   GetProjects() {
-    return this.http.get<MainEngine[]>('api/Projects');
+    return this.http.get<MainEngine[]>(`${this.backend}/api/Projects`);
   }
 
   AddProject(project: GameProject) {

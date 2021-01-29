@@ -3,11 +3,10 @@ const path = require("path");
 const app = express();
 
 console.log("Weird");
-app.use(express.static(__dirname + "/dist/web-game-engine"));
+app.use(express.static(__dirname + "/dist/webgameengine"));
 
 app.get("/*", (req, res) => {
-  //res.send("COOl");
-  res.sendFile(path.join(__dirname + "/dist/web-game-engine/index.html"));
+  res.sendFile(path.join(__dirname + "/dist/webgameengine/index.html"));
 });
 
 app.listen(process.env.PORT || 8080);

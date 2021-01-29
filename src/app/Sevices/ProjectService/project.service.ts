@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MainEngine } from '../../Engine/MainEngine';
 
 import { Project } from '../../Models/Project';
@@ -30,25 +30,47 @@ export class ProjectService {
     //console.log(environment.backend);
   }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    withCredentials: true,
+    // observe: 'response' as 'response',
+  };
+
   GetProjects() {
-    return this.http.get<MainEngine[]>(`${this.backend}/api/Projects`);
+    return this.http.get<MainEngine[]>(
+      `${this.backend}/api/Projects`,
+      this.httpOptions
+    );
   }
 
   AddProject(project: GameProject) {
-    return this.http.post(`${this.backend}/api/Projects/add`, project);
+    return this.http.post(
+      `${this.backend}/api/Projects/add`,
+      project,
+      this.httpOptions
+    );
   }
 
   DeleteProject(_id) {
-    return this.http.post(`${this.backend}/api/Projects/delete`, _id);
+    return this.http.post(
+      `${this.backend}/api/Projects/delete`,
+      _id,
+      this.httpOptions
+    );
   }
 
   SaveProject(object: any) {
-    return this.http.post(`${this.backend}/api/Projects/save`, object);
+    return this.http.post(
+      `${this.backend}/api/Projects/save`,
+      object,
+      this.httpOptions
+    );
   }
 
   GetProject(projectId) {
     return this.http.get<GameProject>(
-      `${this.backend}/api/Project/${projectId}`
+      `${this.backend}/api/Project/${projectId}`,
+      this.httpOptions
     );
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface Credentials {
@@ -30,12 +30,20 @@ export class AuthService {
   }
 
   private backend: string = 'https://web-game-engine-server.herokuapp.com';
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    withCredentials: true,
+    // observe: 'response' as 'response',
+  };
+
   constructor(private http: HttpClient) {}
 
   RegisterUser(data: Credentials) {
     return this.http.post<AuthentificationResponse>(
       `${this.backend}/api/register`,
-      data
+      data,
+      this.httpOptions
     );
   }
   LoginUser(data: Credentials) {
@@ -45,10 +53,13 @@ export class AuthService {
     );
   }
   LogOut() {
-    return this.http.post(`${this.backend}/api/logout`, {});
+    return this.http.post(`${this.backend}/api/logout`, {}, this.httpOptions);
   }
 
   IsLoggedInAPI() {
-    return this.http.get<IsLoggedIn>(`${this.backend}/api/loggedIn`);
+    return this.http.get<IsLoggedIn>(
+      `${this.backend}/api/loggedIn`,
+      this.httpOptions
+    );
   }
 }
